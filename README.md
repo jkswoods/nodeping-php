@@ -12,7 +12,7 @@ Installation
 The recommended way to install NodePing PHP is using composer:
 
 ```bash
-composer require ixis/nodeping-php
+composer require jkswoods/nodeping-php
 ```
 
 Usage

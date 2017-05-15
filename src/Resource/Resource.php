@@ -41,9 +41,10 @@ class Resource {
    * @param array $options
    */
   public function get($endpoint, $options = []) {
-    $response = $this->client->request('GET', $endpoint . '?' . http_build_query($options), [
+    $request = $this->client->createRequest('GET', $endpoint . '?' . http_build_query($options), [
       'auth' => [$this->token, ''],
     ]);
+    $response = $this->client->send($request);
     // Check the response is correctly authenticated.
     if ($this->checkAuthenticatedResponse($response->getBody())) {
       return $response;
@@ -59,19 +60,20 @@ class Resource {
    */
   public function put($endpoint, $data = null, $options = []) {
     if (is_null($data)) {
-      $response = $this->client->request('PUT', $endpoint . '?' . http_build_query($options), [
+      $request = $this->client->createRequest('PUT', $endpoint . '?' . http_build_query($options), [
         'auth' => [$this->token, ''],
         'headers' => [
           'Content-Type' => 'application/json',
         ],
       ]);
+      $response = $this->client->send($request);
       // Check the response is correctly authenticated.
       if ($this->checkAuthenticatedResponse($response->getBody())) {
         return $response;
       }
     }
     
-    $response = $this->client->request('PUT', $endpoint . '?' . http_build_query($options), [
+    $request = $this->client->createRequest('PUT', $endpoint . '?' . http_build_query($options), [
       'auth' => [$this->token, ''],
       'body' => $data,
       'headers' => [
@@ -79,6 +81,7 @@ class Resource {
         'Content-Type' => 'application/json',
       ],
     ]);
+    $response = $this->client->send($request);
     // Check the response is correctly authenticated.
     if ($this->checkAuthenticatedResponse($response->getBody())) {
       return $response;
@@ -94,19 +97,20 @@ class Resource {
    */
   public function post($endpoint, $data = null, $options = []) {
     if (is_null($data)) {
-      $response = $this->client->request('POST', $endpoint . '?' . http_build_query($options), [
+      $request = $this->client->createRequest('POST', $endpoint . '?' . http_build_query($options), [
         'auth' => [$this->token, ''],
         'headers' => [
           'Accept' => 'application/json',
         ],
       ]);
+      $response = $this->client->send($request);
       // Check the response is correctly authenticated.
       if ($this->checkAuthenticatedResponse($response->getBody())) {
         return $response;
       }
     }
 
-    $response = $this->client->request('POST', $endpoint . '?' . http_build_query($options), [
+    $request = $this->client->createRequest('POST', $endpoint . '?' . http_build_query($options), [
       'auth' => [$this->token, ''],
       'body' => $data,
       'headers' => [
@@ -114,6 +118,7 @@ class Resource {
         'Accept' => 'application/json',
       ],
     ]);
+    $response = $this->client->send($request);
     // Check the response is correctly authenticated.
     if ($this->checkAuthenticatedResponse($response->getBody())) {
       return $response;
@@ -127,10 +132,10 @@ class Resource {
    * @param array $options
    */
   public function delete($endpoint, $options = []) {
-    $response = $this->client->request('DELETE', $endpoint . '?' . http_build_query($options), [
+    $request = $this->client->createRequest('DELETE', $endpoint . '?' . http_build_query($options), [
       'auth' => [$this->token, ''],
     ]);
-
+    $response = $this->client->send($request);
     // Check the response is correctly authenticated.
     if ($this->checkAuthenticatedResponse($response->getBody())) {
       return $response;

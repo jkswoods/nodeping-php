@@ -17,8 +17,7 @@ class Client {
   public function __construct($token) {
     $this->token = $token;
     $this->client = new \GuzzleHttp\Client([
-      'base_uri' => 'https://api.nodeping.com/api/1/',
-      'timeout'  => 2.0,
+      'base_url' => 'https://api.nodeping.com/api/1/'
     ]);
   }
 

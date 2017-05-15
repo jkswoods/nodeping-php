@@ -10,13 +10,13 @@ class Result {
   private $target;
   private $threshold;
   private $interval;
-  private $scheduled;
+  private $scheduled; // RA
   private $queue;
   private $startTime;
-  private $result;
+  private $result; // SC
   private $message;
   private $pass;
-  private $runTime;
+  private $runTime; // RT
   private $finishTime;
   private $locations;
 

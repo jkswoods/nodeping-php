@@ -35,6 +35,7 @@ class ResultsResource extends Resource {
   /**
    * Retrieve uptime information for a check
    *
+   * @param string $checkId
    * @param array $options
    *  Available options:
    *   - customerid
@@ -45,8 +46,9 @@ class ResultsResource extends Resource {
    *
    * @see https://nodeping.com/docs-api-results.html#uptime
    */
-  public function getUptime($options = []) {
-    throw new \Nodeping\Exception\NotYetImplementedException('ResultsResource\\getUptime()');
+  public function getUptime($checkId, $options = []) {
+    $results = json_decode($this->get('results/uptime/' . $checkId, $options)->getBody());
+    return $results;
   }
 
   /**
@@ -59,6 +61,6 @@ class ResultsResource extends Resource {
    * @see https://nodeping.com/docs-api-results.html#current
    */
   public function getCurrent($options = []) {
-    throw new \Nodeping\Exception\NotYetImplementedException('ResultsResource\\getCurrent()');
+    throw new \Nodeping\Exception\NotYetImplementedException('ResultsResource::getCurrent()');
   }
 }

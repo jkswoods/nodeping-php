@@ -32,7 +32,7 @@ class ChecksResource extends Resource {
   /**
    * Update an existing check.
    *
-   * @param array $checkId
+   * @param string $checkId
    * @param \Nodeping\Model\Check $check
    *
    * @see https://nodeping.com/docs-api-checks.html#post-put

@@ -195,7 +195,6 @@ class CheckNormalizer extends SerializerAwareNormalizer implements DenormalizerI
     if (null !== $object->getDep()) {
       $data->{'dep'} = $object->getDep();
     }
-    
 
     return $data;
   }

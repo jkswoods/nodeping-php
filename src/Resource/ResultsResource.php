@@ -61,6 +61,7 @@ class ResultsResource extends Resource {
    * @see https://nodeping.com/docs-api-results.html#current
    */
   public function getCurrent($options = []) {
-    throw new \Nodeping\Exception\NotYetImplementedException('ResultsResource::getCurrent()');
+    $results = json_decode($this->get('results/current', $options)->getBody());
+    return $results;
   }
 }
